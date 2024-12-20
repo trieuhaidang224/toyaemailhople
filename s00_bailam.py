@@ -32,6 +32,16 @@ get_name_in_email([None, 'abb#ccc'])                      | ['ERROR invaid email
 #endregion debai
 
 #region bailam
+import re
+
 def get_name_in_email(email_list):
-  pass#TODO
+    result = []
+    regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    for email in email_list:
+        if email and re.match(regex, email):
+            name = email.split('@')[0]
+            result.append(name)
+        else: result.append('ERROR invalid email')
+    return result
+
 #endregion bailam
